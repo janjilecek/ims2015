@@ -6,11 +6,21 @@
 class semafor : public Event
 {
 private:
-    int m_seconds;
-    bool m_passable;
+    int m_secondsGreen;
+    int m_secondsRed;
+    bool isRed;
+    bool isGreen;
+    //bool m_passable;
+
 public:
-    semafor(int seconds) : m_seconds(seconds), m_passable(false) {}
+    semafor(int secondsGreen, int secondsRed) : m_secondsGreen(secondsGreen), m_secondsRed(secondsRed),
+        isRed(true), isGreen(false)
+    {
+        Activate();
+    }
     void Behavior();
+    bool getIsRed() const;
+    bool getIsGreen() const;
 };
 
 #endif // SEMAFOR_H

@@ -11,7 +11,10 @@ class generator : public Event
 private:
     pruh* m_lane;
 public:
-    generator(pruh* lane) :m_lane(lane) {}
+    generator(pruh* lane) : m_lane(lane)
+    {
+        Activate();
+    }
     void Behavior();
 };
 

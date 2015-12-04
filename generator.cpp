@@ -2,9 +2,9 @@
 
 void generator::Behavior()
 {
-    auto* a = new dopravniProstredek();
+    auto* a = new dopravniProstredek(m_lane);
     a->Activate();
-    m_lane->Insert(a);
+    // spravit
     a->Output();
     Activate(Time + Exponential(m_lane->seconds()));
 }

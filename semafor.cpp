@@ -1,7 +1,23 @@
 #include "semafor.h"
 
+
+
+bool semafor::getIsRed() const
+{
+    return isRed;
+}
+
+bool semafor::getIsGreen() const
+{
+    return isGreen;
+}
+
 void semafor::Behavior()
 {
-    m_passable = !m_passable;
-    Activate(Time + m_seconds);
+    isRed = !isRed;
+    isGreen = !isGreen;
+    Activate(Time + m_secondsRed);
+    //Activate(Time + m_secondsGreen);
+    //isGreen = false;
+    //isRed = true;
 }

@@ -4,15 +4,39 @@
 
 using namespace std;
 
+const int semaforGreen = 20;
+const int semaforRed = 25;
+const int laneStraight = 164;
+const int laneLeft = 69;
+
+/*
+Facility lane("Horni");
+
+long ncount = 0;
+
+class Timeout : public Event
+{
+    Process *ptr;
+public:
+    Timeout(double t, Process *p) : ptr(p)
+    {
+        Activate(Time+t);
+    }
+    void Behavior()
+    {
+        ptr->Out();
+    }
+};*/
+
+
+
+
 int main()
 {
     Print("IMS projekt krizovatka\n");
-    SetOutput("model.out");
     Init(0,3000);
-    /*semafor *s = new semafor(25);
-    pruh *p = new pruh(s, 48, ROVNE);
-    (new generator(p))->Activate();*/
     krizovatka k;
+    Run();
 
 
 }
