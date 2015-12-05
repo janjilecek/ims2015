@@ -21,10 +21,12 @@ private:
     armName m_name;
     int m_seconds;
     std::vector<pruh*> m_lanes;
+    dayTimer* m_dayTimer;
 public:
     rameno(armName name);
     int seconds() const;
     void setSeconds(int seconds);
+    std::vector<pruh *> lanes();
 };
 
 #endif // RAMENO_H

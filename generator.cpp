@@ -2,7 +2,8 @@
 
 void generator::Behavior()
 {
-    auto* a = new dopravniProstredek(m_lane);
-    a->Output();
-    Activate(Time + Exponential(m_lane->seconds()));
+    new dopravniProstredek(m_lane);
+    //a->Output();
+    //m_lane->currentSpawnTime();
+    Activate(Time + Exponential(m_lane->getDayTimer()->getCurrentTime()));
 }

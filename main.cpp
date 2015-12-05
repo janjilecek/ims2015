@@ -4,11 +4,18 @@
 
 using namespace std;
 
-
-
 int main()
 {
-    Init(0,3600*48);
-    dayTimer d(0,0.5,1.3,0.1,48,0.01,5.0);
+    Init(0,HOURS*HOURLENGTH);
+    krizovatka k;
+
     Run();
+    for (auto &a : k.getRamena())
+    {
+        for (pruh* b : a.lanes())
+        {
+            b->getF().Output();
+            b->getTabulka().Output();
+        }
+    }
 }

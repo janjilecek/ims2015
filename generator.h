@@ -13,7 +13,8 @@ private:
 public:
     generator(pruh* lane) : m_lane(lane)
     {
-        Activate();
+
+        Activate(Time);
     }
     void Behavior();
 };
