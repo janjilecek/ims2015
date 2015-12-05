@@ -33,6 +33,5 @@ Facility* pruh::getF()
 pruh::pruh(semafor *s, double seconds, laneDir dirOfLane): m_counter(0), m_dirOfLane(dirOfLane),
     m_semafor(s), m_seconds(seconds), m_generator(new generator(this)), f(this)
 {
-    Print(m_dirOfLane);
     m_generator->Activate();
 }

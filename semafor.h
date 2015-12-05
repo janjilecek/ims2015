@@ -8,19 +8,17 @@ class semafor : public Event
 private:
     int m_secondsGreen;
     int m_secondsRed;
-    bool isRed;
-    bool isGreen;
-    //bool m_passable;
+    bool m_passable;
 
 public:
     semafor(int secondsGreen, int secondsRed) : m_secondsGreen(secondsGreen), m_secondsRed(secondsRed),
-        isRed(true), isGreen(false)
+        m_passable(false)
     {
-        Activate();
+        Activate(Time);
     }
     void Behavior();
-    bool getIsRed() const;
-    bool getIsGreen() const;
+
+    bool getPassable() const;
 };
 
 #endif // SEMAFOR_H
