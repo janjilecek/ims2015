@@ -29,15 +29,13 @@ struct dayTime
 class dayTimer : public Event
 {
 private:
-    dayTime* m_dayTime;
+    //dayTime* m_dayTime;
+    dayTime m_dayTime;
     int m_currentTime;
     int m_currentHour;
-    float m_loadMorning;
-    float m_loadAfternoon;
-    float m_loadNight;
+
     float m_loadNormalTime;
-    float m_loadExtremeLow;
-    float m_loadExtremeHigh;
+
     float m_loadCurrent;
     float m_timePortion;
     float m_passIntersectionMin;
@@ -45,7 +43,7 @@ private:
     float calculateLoad(float former, float latter);
 public:
     //dayTimer(dayTime* d, int seconds);
-    dayTimer(int currentHour, float loadMorning, float loadAfternoon, float loadNight, float loadNormalTime, float loadExtremeLow, float loadExtremeHigh);
+    dayTimer(float loadNormalTime);
     void Behavior();
     int getCurrentTime() const;
     ~dayTimer()
@@ -84,7 +82,6 @@ public:
     void setCounter(int counter);
     Facility& getF();
     dayTimer *getDayTimer() const;
-    double currentSpawnTime();
     Histogram& getTabulka();
    /* ~pruh()
     {

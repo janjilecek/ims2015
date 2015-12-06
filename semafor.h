@@ -16,6 +16,11 @@ public:
     {
         Activate(Time);
     }
+    semafor() : m_secondsGreen(20), m_secondsRed(25), m_passable(false)
+    {
+        Activate(Time);
+    }
+
     void Behavior();
 
     bool getPassable() const;
