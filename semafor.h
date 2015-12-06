@@ -19,6 +19,8 @@ public:
     void Behavior();
 
     bool getPassable() const;
+    void setSecondsRed(int secondsRed);
+    void setSecondsGreen(int secondsGreen);
 };
 
 #endif // SEMAFOR_H

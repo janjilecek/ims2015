@@ -6,16 +6,31 @@ using namespace std;
 
 int main()
 {
+    //RandomSeed(125464);
     Init(0,HOURS*HOURLENGTH);
     krizovatka k;
 
     Run();
-    for (auto &a : k.getRamena())
+    for (auto &arm : k.getRamena())
     {
-        for (pruh* b : a.lanes())
+        for (auto &lane : arm.lanes())
         {
-            b->getF().Output();
-            b->getTabulka().Output();
+            lane->getF().Output();
+            lane->getTabulka().Output();
         }
     }
+
+    /*RandomSeed(5646578);
+    Init(0,HOURS*HOURLENGTH);
+    krizovatka kk;
+
+    Run();
+    for (auto &arm : kk.getRamena())
+    {
+        for (auto &lane : arm.lanes())
+        {
+            lane->getF().Output();
+            lane->getTabulka().Output();
+        }
+    }*/
 }

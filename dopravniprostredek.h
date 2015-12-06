@@ -3,8 +3,6 @@
 #include <simlib.h>
 #include "pruh.h"
 
-//Facility silnice("Rameno0");
-
 class pruh;
 class dopravniProstredek : public Process
 {

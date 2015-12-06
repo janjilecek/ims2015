@@ -7,7 +7,7 @@ std::vector<rameno> krizovatka::getRamena() const
 
 krizovatka::krizovatka()
 {
-    for (int i = 0; i < 4; ++i) //sprav zpet na 4
+    for (int i = 0; i < 1; ++i) // zmen zpet na 4
     {
         rameno r((armName)i);
         ramena.push_back(r);
