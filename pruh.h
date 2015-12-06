@@ -35,12 +35,14 @@ private:
     int m_currentHour;
 
     float m_loadNormalTime;
+    semafor m_sem;
 
     float m_loadCurrent;
     float m_timePortion;
     float m_passIntersectionMin;
     float m_passIntersectionMax;
     float calculateLoad(float former, float latter);
+
 public:
     //dayTimer(dayTime* d, int seconds);
     dayTimer(float loadNormalTime);
@@ -50,6 +52,7 @@ public:
     {
         //delete m_dayTime;
     }
+    semafor &getSem();
 };
 
 
@@ -67,17 +70,14 @@ private:
     laneDir m_dirOfLane;
     dayTimer* m_dayTimer;
     const std::string m_nameOfArm;
-    semafor *m_semafor;
     double m_seconds;
     generator* m_generator;
     Facility f;
     Histogram tabulka;
 public:
-    pruh(semafor *s, laneDir dirOfLane, dayTimer* d, const std::string nameOfArm);
+    pruh(laneDir dirOfLane, dayTimer* d, const std::string nameOfArm);
     double seconds() const;
     void setSeconds(double seconds);
-
-    semafor *pSemafor() const;
     int counter() const;
     void setCounter(int counter);
     Facility& getF();
