@@ -17,8 +17,7 @@ void OutputGnuplot::Output()
       s += x;
       to = from+step;
       int hour = from/3600;
-      Print("%d %8u \n",hour, x);
-      //Print(" %8u \n", x);
+      Print("%d %u\n",hour, x);
       from = to;
     }
     Print("\n");

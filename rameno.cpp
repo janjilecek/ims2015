@@ -11,7 +11,7 @@ rameno::rameno(armName name) : m_name(name)
     {
     case HORNI:
         m_lanes.push_back((new pruh(m_name, new dayTimer(164), "Horni rovne"))->setTiming(0.09,1.81,1.81));
-        m_lanes.push_back((new pruh(m_name, new dayTimer(69), "Horni doleva"))->setTiming(0.12,1.23,1.23));
+    /*    m_lanes.push_back((new pruh(m_name, new dayTimer(69), "Horni doleva"))->setTiming(0.12,1.23,1.23));
         break;
     case PRAVE:
         m_lanes.push_back((new pruh(m_name, new dayTimer(23), "Prave doprava"))->setTiming(0.13,2.70,1.81));
@@ -27,6 +27,6 @@ rameno::rameno(armName name) : m_name(name)
         m_lanes.push_back((new pruh(m_name, new dayTimer(90), "Leve doprava"))->setTiming(0.2,1.4,1.81));
         break;
     default:
-        throw std::runtime_error("Error - Invalid semafor class initialization.");
+        throw std::runtime_error("Error - Invalid semafor class initialization.");*/
     }
 }

@@ -7,8 +7,8 @@ using namespace std;
 int main()
 {
    // SetOutput("krizovatka.dat");
-    //RandomSeed(125464);
-    Init(0,HOURS*HOURLENGTH);
+    RandomSeed(125464); // pridat time random
+    Init(0,dayTimer::simHours*HOURLENGTH);
     krizovatka k;
 
     Run();
@@ -22,17 +22,4 @@ int main()
         }
     }
 
-    /*RandomSeed(5646578);
-    Init(0,HOURS*HOURLENGTH);
-    krizovatka kk;
-
-    Run();
-    for (auto &arm : kk.getRamena())
-    {
-        for (auto &lane : arm.lanes())
-        {
-            lane->getF().Output();
-            lane->getTabulka().Output();
-        }
-    }*/
 }

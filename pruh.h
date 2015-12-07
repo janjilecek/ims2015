@@ -8,7 +8,6 @@
 #include "outputgnuplot.h"
 
 #define HOURLENGTH 3600
-#define HOURS 24
 
 class generator;
 enum armName
@@ -44,6 +43,7 @@ private:
     int m_currentHour;
 
     float m_loadNormalTime;
+    int m_simulateHours;
     semafor m_sem;
 
     float m_loadCurrent;
@@ -53,8 +53,9 @@ private:
     float calculateLoad(float former, float latter);
 
 public:
+    static int simHours;
     //dayTimer(dayTime* d, int seconds);
-    dayTimer(float loadNormalTime);
+    dayTimer(float loadNormalTime, int simulateHours = 24, int startHour=0);
     void Behavior();
     int getCurrentTime() const;
     ~dayTimer()
@@ -63,6 +64,8 @@ public:
     }
     semafor &getSem();
     dayTime &getDayTime();
+    int &getCurrentHour();
+    void setLoadCurrent(float loadCurrent);
 };
 
 
