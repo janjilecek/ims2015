@@ -117,12 +117,12 @@ float dayTimer::calculateLoad(float former, float latter)
 }
 
 dayTimer::dayTimer(float loadNormalTime, int simulateHours, int startHour) :
-    m_dayTime(0.2,  // 0-4
-              0.2,  // 4-8
-              1.5,  // 8-12
+    m_dayTime(0.145,  // 0-4
+              0.529,  // 4-8
+              0.913,  // 8-12
               1.0,  // 12-16
-              3.0,  // 16-20
-              0.1,  // 20-24
+              1.099,  // 16-20
+              0.622,  // 20-24
               0.1,  // lowEx
               2),   // highEx
     m_currentHour(startHour),

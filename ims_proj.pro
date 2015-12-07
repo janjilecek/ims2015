@@ -13,7 +13,8 @@ SOURCES += main.cpp \
     dopravniprostredek.cpp \
     generator.cpp \
     pruh.cpp \
-    outputgnuplot.cpp
+    outputgnuplot.cpp \
+    dataformatter.cpp
 
 HEADERS += \
     krizovatka.h \
@@ -22,5 +23,6 @@ HEADERS += \
     dopravniprostredek.h \
     generator.h \
     pruh.h \
-    outputgnuplot.h
+    outputgnuplot.h \
+    dataformatter.h
 

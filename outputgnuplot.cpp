@@ -1,6 +1,5 @@
 #include "outputgnuplot.h"
-#include <fstream>
-#include <iostream>
+
 
 OutputGnuplot::OutputGnuplot(const char *_name, double low, double step, unsigned count=10, int hours=24) :
     Histogram(_name, low, step, count),
@@ -39,3 +38,13 @@ void OutputGnuplot::Output()
     Print("\n");
 }
 
+
+void CustomOutput::queueOut(std::string name, int inp)
+{
+    std::ostringstream oss;
+    oss << name << "_queue.imsdat";
+    std::ofstream myfile;
+    myfile.open (oss.str(), std::ios::out | std::ios::app);
+    myfile << inp << std::endl;
+    myfile.close();
+}
