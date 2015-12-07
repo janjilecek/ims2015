@@ -9,5 +9,6 @@ void dopravniProstredek::Behavior()
     Wait(Uniform(2.0,4.0));
     Release(m_lane->getF());
     m_lane->getTabulka()(Time);
+    m_lane->getPlt()(Time);
 }
 

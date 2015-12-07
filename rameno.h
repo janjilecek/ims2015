@@ -6,13 +6,7 @@
 #include "pruh.h"
 #include <stdexcept>
 
-enum armName
-{
-    HORNI,
-    PRAVE,
-    DOLNI,
-    LEVE
-};
+
 
 
 class rameno

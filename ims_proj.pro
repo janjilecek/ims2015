@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     semafor.cpp \
     dopravniprostredek.cpp \
     generator.cpp \
-    pruh.cpp
+    pruh.cpp \
+    outputgnuplot.cpp
 
 HEADERS += \
     krizovatka.h \
@@ -20,5 +21,6 @@ HEADERS += \
     semafor.h \
     dopravniprostredek.h \
     generator.h \
-    pruh.h
+    pruh.h \
+    outputgnuplot.h
 

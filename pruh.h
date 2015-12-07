@@ -5,11 +5,20 @@
 #include "generator.h"
 #include <cmath>
 #include <string>
+#include "outputgnuplot.h"
 
 #define HOURLENGTH 3600
 #define HOURS 24
 
 class generator;
+enum armName
+{
+    HORNI,
+    PRAVE,
+    DOLNI,
+    LEVE
+};
+
 struct dayTime
 {
     float s0e4;
@@ -53,6 +62,7 @@ public:
         //delete m_dayTime;
     }
     semafor &getSem();
+    dayTime &getDayTime();
 };
 
 
@@ -74,8 +84,10 @@ private:
     generator* m_generator;
     Facility f;
     Histogram tabulka;
+    OutputGnuplot plt;
 public:
-    pruh(laneDir dirOfLane, dayTimer* d, const std::string nameOfArm);
+    pruh(armName namearm, dayTimer* d, const std::string nameOfArm);
+    pruh* setTiming(float s0e4, float s8e12, float s16e20);
     double seconds() const;
     void setSeconds(double seconds);
     int counter() const;
@@ -88,6 +100,7 @@ public:
         delete m_dayTimer;
         delete m_semafor;
     }*/
+    OutputGnuplot &getPlt();
 };
 
 #endif // PRUH_H

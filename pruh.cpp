@@ -35,12 +35,34 @@ Histogram& pruh::getTabulka()
     return tabulka;
 }
 
-pruh::pruh(laneDir dirOfLane, dayTimer* d, const std::string nameOfArm): m_counter(0), m_dirOfLane(dirOfLane),
+OutputGnuplot &pruh::getPlt()
+{
+    return plt;
+}
+
+
+pruh::pruh(armName namearm, dayTimer* d, const std::string nameOfArm): m_counter(0),
     m_dayTimer(d), m_nameOfArm(nameOfArm),
     m_generator(new generator(this)),
-    f(m_nameOfArm.c_str()), tabulka(m_nameOfArm.c_str(), 0, HOURLENGTH, HOURS)
+    f(m_nameOfArm.c_str()), tabulka(m_nameOfArm.c_str(), 0, HOURLENGTH, HOURS), plt(m_nameOfArm.c_str(), 0, HOURLENGTH, HOURS)
 {
+    switch (namearm)
+    {
+        case HORNI: m_dayTimer->getSem().setPassable(false); break;
+        case PRAVE: m_dayTimer->getSem().setPassable(true); break;
+        case DOLNI: m_dayTimer->getSem().setPassable(false); break;
+        case LEVE: m_dayTimer->getSem().setPassable(true); break;
+    }
+
     m_generator->Activate();
+}
+
+pruh* pruh::setTiming(float s0e4, float s8e12, float s16e20)
+{
+    getDayTimer()->getDayTime().s0e4 = s0e4;
+    getDayTimer()->getDayTime().s8e12 = s8e12;
+    getDayTimer()->getDayTime().s16e20 = s16e20;
+    return this;
 }
 
 
@@ -52,6 +74,11 @@ int dayTimer::getCurrentTime() const
 semafor &dayTimer::getSem()
 {
     return m_sem;
+}
+
+dayTime &dayTimer::getDayTime()
+{
+    return m_dayTime;
 }
 
 float dayTimer::calculateLoad(float former, float latter)
@@ -85,7 +112,7 @@ void dayTimer::Behavior()
 
     if (m_currentHour == 5 || m_currentHour == 22) // v noci jsou semafory vypnute, ridici ale musi zpomalit a rozhlednout se
     {
-        m_sem.setSecondsGreen(1);
+        m_sem.setSecondsGreen(1); // opravit
         m_sem.setSecondsRed(1);
     }
     else

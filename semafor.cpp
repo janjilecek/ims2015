@@ -16,6 +16,11 @@ void semafor::setSecondsGreen(int secondsGreen)
     m_secondsGreen = secondsGreen;
 }
 
+void semafor::setPassable(bool passable)
+{
+    m_passable = passable;
+}
+
 void semafor::Behavior()
 {
     m_passable = !m_passable;
