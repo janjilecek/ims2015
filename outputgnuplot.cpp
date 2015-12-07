@@ -1,4 +1,10 @@
 #include "outputgnuplot.h"
+#include <fstream>
+#include <iostream>
+
+OutputGnuplot::OutputGnuplot(const char *_name, double low, double step, unsigned count=10, int hours=24) :
+    Histogram(_name, low, step, count),
+    m_hours(hours) {}
 
 void OutputGnuplot::Output()
 {
@@ -17,7 +23,17 @@ void OutputGnuplot::Output()
       s += x;
       to = from+step;
       int hour = from/3600;
-      Print("%d %u\n",hour, x);
+      if (m_hours == 24)
+      {
+        Print("%d %u\n",hour, x);
+      }
+      else
+      {
+          std::ofstream myfile;
+          myfile.open (Name(), std::ios::out | std::ios::app);
+          myfile << x << std::endl;
+          myfile.close();
+      }
       from = to;
     }
     Print("\n");

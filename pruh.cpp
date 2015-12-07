@@ -46,7 +46,8 @@ OutputGnuplot &pruh::getPlt()
 pruh::pruh(armName namearm, dayTimer* d, const std::string nameOfArm): m_counter(0),
     m_dayTimer(d), m_nameOfArm(nameOfArm),
     m_generator(new generator(this)),
-    f(m_nameOfArm.c_str()), tabulka(m_nameOfArm.c_str(), 0, HOURLENGTH, dayTimer::simHours), plt(m_nameOfArm.c_str(), 0, HOURLENGTH, dayTimer::simHours)
+    f(m_nameOfArm.c_str()), tabulka(m_nameOfArm.c_str(), 0, HOURLENGTH, dayTimer::simHours),
+    plt(m_nameOfArm.c_str(), 0, HOURLENGTH, dayTimer::simHours, dayTimer::simHours)
 {
     switch (namearm)
     {

@@ -10,7 +10,7 @@ rameno::rameno(armName name) : m_name(name)
     switch (m_name)
     {
     case HORNI:
-        m_lanes.push_back((new pruh(m_name, new dayTimer(164), "Horni rovne"))->setTiming(0.09,1.81,1.81));
+        m_lanes.push_back((new pruh(m_name, new dayTimer(164, 1, 8), "Horni rovne"))->setTiming(0.09,1.81,1.81));
     /*    m_lanes.push_back((new pruh(m_name, new dayTimer(69), "Horni doleva"))->setTiming(0.12,1.23,1.23));
         break;
     case PRAVE:
