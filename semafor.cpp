@@ -1,27 +1,27 @@
 #include "semafor.h"
 
 
-bool semafor::getPassable() const
+bool Semafor::getPassable() const
 {
     return m_passable;
 }
 
-void semafor::setSecondsRed(int secondsRed)
+void Semafor::setSecondsRed(int secondsRed)
 {
     m_secondsRed = secondsRed;
 }
 
-void semafor::setSecondsGreen(int secondsGreen)
+void Semafor::setSecondsGreen(int secondsGreen)
 {
     m_secondsGreen = secondsGreen;
 }
 
-void semafor::setPassable(bool passable)
+void Semafor::setPassable(bool passable)
 {
     m_passable = passable;
 }
 
-void semafor::Behavior()
+void Semafor::Behavior()
 {
     m_passable = !m_passable;
     if (m_passable)

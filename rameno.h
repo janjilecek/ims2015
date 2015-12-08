@@ -9,16 +9,16 @@
 
 
 
-class rameno
+class Rameno
 {
 private:
     dayTime *m_dayTime;
     armName m_name;
-    std::vector<pruh*> m_lanes;
-    dayTimer* m_dayTimer;
+    std::vector<Pruh*> m_lanes;
+    DayTimer* m_dayTimer;
 public:
-    rameno(armName name);
-    std::vector<pruh *> lanes();
+    Rameno(armName name);
+    std::vector<Pruh *> lanes();
 
 };
 

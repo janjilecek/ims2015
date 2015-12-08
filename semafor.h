@@ -3,7 +3,7 @@
 #include <simlib.h>
 
 
-class semafor : public Event
+class Semafor : public Event
 {
 private:
     int m_secondsGreen;
@@ -11,12 +11,12 @@ private:
     bool m_passable;
 
 public:
-    semafor(int secondsGreen, int secondsRed) : m_secondsGreen(secondsGreen), m_secondsRed(secondsRed),
+    Semafor(int secondsGreen, int secondsRed) : m_secondsGreen(secondsGreen), m_secondsRed(secondsRed),
         m_passable(false)
     {
         Activate(Time);
     }
-    semafor() : m_secondsGreen(20), m_secondsRed(25), m_passable(false)
+    Semafor() : m_secondsGreen(20), m_secondsRed(25), m_passable(false)
     {
         Activate(Time);
     }

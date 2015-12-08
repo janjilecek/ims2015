@@ -3,14 +3,14 @@
 #include <simlib.h>
 #include "pruh.h"
 
-class pruh;
-class dopravniProstredek : public Process
+class Pruh;
+class DopravniProstredek : public Process
 {
 private:
     double prijezd;
-    pruh* m_lane;
+    Pruh* m_lane;
 public:
-    dopravniProstredek(pruh* lane) : m_lane(lane)
+    DopravniProstredek(Pruh* lane) : m_lane(lane)
     {
         Activate(Time);
     }

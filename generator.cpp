@@ -1,7 +1,7 @@
 #include "generator.h"
 
-void generator::Behavior()
+void Generator::Behavior()
 {
-    new dopravniProstredek(m_lane);
+    new DopravniProstredek(m_lane);
     Activate(Time + Exponential(m_lane->getDayTimer()->getCurrentTime()));
 }

@@ -1,15 +1,15 @@
 #include "krizovatka.h"
 
-std::vector<rameno> krizovatka::getRamena() const
+std::vector<Rameno> Krizovatka::getRamena() const
 {
     return ramena;
 }
 
-krizovatka::krizovatka()
+Krizovatka::Krizovatka()
 {
     for (int i = 0; i < 4; ++i)
     {
-        rameno r((armName)i);
+        Rameno r((armName)i);
         ramena.push_back(r);
     }
 }

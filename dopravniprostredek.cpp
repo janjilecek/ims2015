@@ -1,7 +1,7 @@
 #include "dopravniprostredek.h"
 
 
-void dopravniProstredek::Behavior()
+void DopravniProstredek::Behavior()
 {
     prijezd = Time;
     Seize(m_lane->getF());

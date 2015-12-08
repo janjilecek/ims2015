@@ -9,7 +9,7 @@
 
 #define HOURLENGTH 3600
 
-class generator;
+class Generator;
 enum armName
 {
     HORNI,
@@ -34,7 +34,7 @@ struct dayTime
     {}
 };
 
-class dayTimer : public Event
+class DayTimer : public Event
 {
 private:
     //dayTime* m_dayTime;
@@ -44,7 +44,7 @@ private:
 
     float m_loadNormalTime;
     int m_simulateHours;
-    semafor m_sem;
+    Semafor m_sem;
 
     float m_loadCurrent;
     float m_timePortion;
@@ -56,14 +56,14 @@ public:
     static int simHours;
     static float multiplier;
     //dayTimer(dayTime* d, int seconds);
-    dayTimer(float loadNormalTime, int simulateHours = 24, int startHour=0);
+    DayTimer(float loadNormalTime, int simulateHours = 24, int startHour=0);
     void Behavior();
     int getCurrentTime() const;
-    ~dayTimer()
+    ~DayTimer()
     {
         //delete m_dayTime;
     }
-    semafor &getSem();
+    Semafor &getSem();
     dayTime &getDayTime();
     int &getCurrentHour();
     void setLoadCurrent(float loadCurrent);
@@ -77,28 +77,28 @@ enum laneDir
     DOLEVA
 };
 
-class pruh
+class Pruh
 {
 private:
     int m_counter;
     laneDir m_dirOfLane;
-    dayTimer* m_dayTimer;
+    DayTimer* m_dayTimer;
     const std::string m_nameOfArm;
     double m_seconds;
-    generator* m_generator;
+    Generator* m_generator;
     Facility f;
     Histogram tabulka;
     OutputGnuplot plt;
 public:
     float multiplier;
-    pruh(armName namearm, dayTimer* d, const std::string nameOfArm);
-    pruh* setTiming(float s0e4, float s8e12, float s16e20);
+    Pruh(armName namearm, DayTimer* d, const std::string nameOfArm);
+    Pruh* setTiming(float s0e4, float s8e12, float s16e20);
     double seconds() const;
     void setSeconds(double seconds);
     int counter() const;
     void setCounter(int counter);
     Facility& getF();
-    dayTimer *getDayTimer() const;
+    DayTimer *getDayTimer() const;
     Histogram& getTabulka();
    /* ~pruh()
     {

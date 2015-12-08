@@ -1,53 +1,53 @@
 #include "pruh.h"
 
-int dayTimer::simHours = 24;
-float dayTimer::multiplier = 1;
-double pruh::seconds() const
+int DayTimer::simHours = 24;
+float DayTimer::multiplier = 1;
+double Pruh::seconds() const
 {
     return m_seconds;
 }
 
-void pruh::setSeconds(double seconds)
+void Pruh::setSeconds(double seconds)
 {
     m_seconds = seconds;
 }
 
-int pruh::counter() const
+int Pruh::counter() const
 {
     return m_counter;
 }
 
-void pruh::setCounter(int counter)
+void Pruh::setCounter(int counter)
 {
     m_counter = counter;
 }
 
-Facility& pruh::getF()
+Facility& Pruh::getF()
 {
     return f;
 }
 
-dayTimer *pruh::getDayTimer() const
+DayTimer *Pruh::getDayTimer() const
 {
     return m_dayTimer;
 }
 
-Histogram& pruh::getTabulka()
+Histogram& Pruh::getTabulka()
 {
     return tabulka;
 }
 
-OutputGnuplot &pruh::getPlt()
+OutputGnuplot &Pruh::getPlt()
 {
     return plt;
 }
 
 
-pruh::pruh(armName namearm, dayTimer* d, const std::string nameOfArm): m_counter(0),
+Pruh::Pruh(armName namearm, DayTimer* d, const std::string nameOfArm): m_counter(0),
     m_dayTimer(d), m_nameOfArm(nameOfArm),
-    m_generator(new generator(this)),
-    f(m_nameOfArm.c_str()), tabulka(m_nameOfArm.c_str(), 0, HOURLENGTH, dayTimer::simHours),
-    plt(m_nameOfArm.c_str(), 0, HOURLENGTH, dayTimer::simHours, dayTimer::simHours)
+    m_generator(new Generator(this)),
+    f(m_nameOfArm.c_str()), tabulka(m_nameOfArm.c_str(), 0, HOURLENGTH, DayTimer::simHours),
+    plt(m_nameOfArm.c_str(), 0, HOURLENGTH, DayTimer::simHours, DayTimer::simHours)
 {
     switch (namearm)
     {
@@ -56,11 +56,11 @@ pruh::pruh(armName namearm, dayTimer* d, const std::string nameOfArm): m_counter
         case DOLNI: m_dayTimer->getSem().setPassable(false); break;
         case LEVE: m_dayTimer->getSem().setPassable(true); break;
     }
-    multiplier = dayTimer::multiplier;
+    multiplier = DayTimer::multiplier;
     //m_generator->Activate();
 }
 
-pruh* pruh::setTiming(float s0e4, float s8e12, float s16e20)
+Pruh* Pruh::setTiming(float s0e4, float s8e12, float s16e20)
 {
     getDayTimer()->getDayTime().s0e4 = s0e4;
     getDayTimer()->getDayTime().s8e12 = s8e12;
@@ -77,7 +77,10 @@ pruh* pruh::setTiming(float s0e4, float s8e12, float s16e20)
     {
         getDayTimer()->setLoadCurrent(s16e20);
     }
-    // else stays at low extreme
+    else
+    {
+        getDayTimer()->setLoadCurrent(s0e4);
+    }
 
     getDayTimer()->getDayTime().s0e4 *= multiplier; // for experiments
     getDayTimer()->getDayTime().s4e8 *= multiplier;
@@ -91,32 +94,32 @@ pruh* pruh::setTiming(float s0e4, float s8e12, float s16e20)
 }
 
 
-int dayTimer::getCurrentTime() const
+int DayTimer::getCurrentTime() const
 {
     return m_currentTime;
 }
 
-semafor &dayTimer::getSem()
+Semafor &DayTimer::getSem()
 {
     return m_sem;
 }
 
-dayTime &dayTimer::getDayTime()
+dayTime &DayTimer::getDayTime()
 {
     return m_dayTime;
 }
 
-int &dayTimer::getCurrentHour()
+int &DayTimer::getCurrentHour()
 {
     return m_currentHour;
 }
 
-void dayTimer::setLoadCurrent(float loadCurrent)
+void DayTimer::setLoadCurrent(float loadCurrent)
 {
     m_loadCurrent = loadCurrent;
 }
 
-float dayTimer::calculateLoad(float former, float latter)
+float DayTimer::calculateLoad(float former, float latter)
 {
     m_loadCurrent += ((latter - former)/m_timePortion);
     if (m_loadCurrent <= 0) m_loadCurrent = 0.05; // ochrana proti chodu do minulosti a zastaveni
@@ -124,7 +127,7 @@ float dayTimer::calculateLoad(float former, float latter)
     return m_loadCurrent;
 }
 
-dayTimer::dayTimer(float loadNormalTime, int simulateHours, int startHour) :
+DayTimer::DayTimer(float loadNormalTime, int simulateHours, int startHour) :
     m_dayTime(0.145,  // 0-4
               0.529,  // 4-8
               0.913,  // 8-12
@@ -140,11 +143,11 @@ dayTimer::dayTimer(float loadNormalTime, int simulateHours, int startHour) :
     m_timePortion(4.0)
 {
     m_loadCurrent = m_dayTime.s0e4;
-    dayTimer::simHours = simulateHours;
+    DayTimer::simHours = simulateHours;
     //Activate(Time);
 }
 
-void dayTimer::Behavior()
+void DayTimer::Behavior()
 {
     m_currentHour = (m_currentHour+1)%24;
 

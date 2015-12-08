@@ -7,13 +7,13 @@
 #include <cmath>
 
 
-class krizovatka
+class Krizovatka
 {
 private:
-    std::vector<rameno> ramena;
+    std::vector<Rameno> ramena;
 public:
-    krizovatka();
-    std::vector<rameno> getRamena() const;
+    Krizovatka();
+    std::vector<Rameno> getRamena() const;
 };
 
 

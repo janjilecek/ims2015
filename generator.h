@@ -5,13 +5,13 @@
 #include "dopravniprostredek.h"
 
 
-class pruh;
-class generator : public Event
+class Pruh;
+class Generator : public Event
 {
 private:
-    pruh* m_lane;
+    Pruh* m_lane;
 public:
-    generator(pruh* lane) : m_lane(lane)
+    Generator(Pruh* lane) : m_lane(lane)
     {
 
         Activate(Time);

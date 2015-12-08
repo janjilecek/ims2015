@@ -5,43 +5,53 @@
 #include <random>
 #include "dataformatter.h"
 
-using namespace std;
+#define DAYTESTING
+
 
 int main(int argc, char** argv)
 {
-   // SetOutput("krizovatka.dat");
+    //SetOutput("krizovatka.dat");
     if (argc == 2)
     {
         std::istringstream ss(argv[1]);
-        int x;
+        float x;
         if (!(ss >> x))
-            cerr << "Invalid number " << argv[1] << '\n';
-        dayTimer::multiplier = x;
+            std::cerr << "Invalid number " << argv[1] << '\n';
+        DayTimer::multiplier = x;
     }
+    #ifdef DAYTESTING
+    int pokusy = 1;
+    #endif
+    #ifndef DAYTESTING
     int pokusy = 200;
+    #endif
     for (int i = 0; i < pokusy; ++i)
     {
         srand(i);
         RandomSeed(time(NULL)*rand());
-        Init(0,dayTimer::simHours*HOURLENGTH);
+        Init(0,DayTimer::simHours*HOURLENGTH);
 
-        krizovatka k;
+        Krizovatka k;
 
 
         Run();
         for (auto &arm : k.getRamena())
         {
-            for (pruh *lane : arm.lanes())
+            for (Pruh *lane : arm.lanes())
             {
-                //lane->getF().Output();
+
+                lane->getF().Output();
+                lane->getTabulka().Output();
+                //lane->getPlt().Output();
+
+                #ifndef DAYTESTING
                 CustomOutput::queueOut(lane->getF().Name(), lane->getF().Q1->StatN.Max(), true);
-                CustomOutput::queueOut(lane->getF().Name(), lane->getF().Q1->StatDT.Max(), false);
-               // lane->getTabulka().Output();
-                lane->getPlt().Output();
+                CustomOutput::queueOut(lane->getF().Name(), lane->getF().Q1->StatDT.Max(), false
+                #endif
             }
         }
     }
+    #ifndef DAYTESTING
     DataFormatter::countAverageToFile();
-
-
+    #endif
 }
