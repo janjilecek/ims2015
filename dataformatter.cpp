@@ -27,7 +27,8 @@ void DataFormatter::countAverageToFile()
     names.push_back("Leve rovne_queue.imsdat");
     names.push_back("Leve doprava_queue.imsdat");
 
-
+    std::ofstream myf;
+    myf.open ("output.avg", std::ios::out | std::ios::app);
     for (auto &filename : names)
     {
         std::ifstream myfile(filename);
@@ -52,13 +53,12 @@ void DataFormatter::countAverageToFile()
         res /= (float) v.size();
 
         std::ostringstream oss;
-        oss << filename << ".avg";
-        std::ofstream myf;
-        myf.open (oss.str(), std::ios::out);
-        myf << res << std::endl;
-        myf.close();
-    }
+        oss << filename << "," << (int)res << std::endl;
+        myf << oss.str();
 
+
+    }
+    myf.close();
 
 
 

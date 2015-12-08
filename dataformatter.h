@@ -11,6 +11,7 @@ class DataFormatter
 public:
     DataFormatter();
     static void countAverageToFile();
+    static void packToOneFile();
 };
 
 #endif // DATAFORMATTER_H

@@ -1,7 +1,7 @@
 #include "rameno.h"
 
 //#define DAYTESTING
-#define TESTHOUR 12
+#define TESTHOUR 0
 
 std::vector<pruh *> rameno::lanes()
 {
