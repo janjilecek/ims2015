@@ -54,34 +54,26 @@ SOURCES       = main.cpp \
 		semafor.cpp \
 		dopravniprostredek.cpp \
 		generator.cpp \
-		pruh.cpp \
-		outputgnuplot.cpp \
-		dataformatter.cpp 
+		pruh.cpp 
 OBJECTS       = main.o \
 		krizovatka.o \
 		rameno.o \
 		semafor.o \
 		dopravniprostredek.o \
 		generator.o \
-		pruh.o \
-		outputgnuplot.o \
-		dataformatter.o
+		pruh.o
 DIST          = ims_proj.pro krizovatka.h \
 		rameno.h \
 		semafor.h \
 		dopravniprostredek.h \
 		generator.h \
-		pruh.h \
-		outputgnuplot.h \
-		dataformatter.h main.cpp \
+		pruh.h main.cpp \
 		krizovatka.cpp \
 		rameno.cpp \
 		semafor.cpp \
 		dopravniprostredek.cpp \
 		generator.cpp \
-		pruh.cpp \
-		outputgnuplot.cpp \
-		dataformatter.cpp
+		pruh.cpp
 QMAKE_TARGET  = ims_proj
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = ims_proj
@@ -158,9 +150,7 @@ main.o: main.cpp krizovatka.h \
 		semafor.h \
 		pruh.h \
 		generator.h \
-		dopravniprostredek.h \
-		outputgnuplot.h \
-		dataformatter.h
+		dopravniprostredek.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 krizovatka.o: krizovatka.cpp krizovatka.h \
@@ -168,16 +158,14 @@ krizovatka.o: krizovatka.cpp krizovatka.h \
 		semafor.h \
 		pruh.h \
 		generator.h \
-		dopravniprostredek.h \
-		outputgnuplot.h
+		dopravniprostredek.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o krizovatka.o krizovatka.cpp
 
 rameno.o: rameno.cpp rameno.h \
 		semafor.h \
 		pruh.h \
 		generator.h \
-		dopravniprostredek.h \
-		outputgnuplot.h
+		dopravniprostredek.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rameno.o rameno.cpp
 
 semafor.o: semafor.cpp semafor.h
@@ -186,29 +174,20 @@ semafor.o: semafor.cpp semafor.h
 dopravniprostredek.o: dopravniprostredek.cpp dopravniprostredek.h \
 		pruh.h \
 		semafor.h \
-		generator.h \
-		outputgnuplot.h
+		generator.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dopravniprostredek.o dopravniprostredek.cpp
 
 generator.o: generator.cpp generator.h \
 		pruh.h \
 		semafor.h \
-		outputgnuplot.h \
 		dopravniprostredek.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o generator.o generator.cpp
 
 pruh.o: pruh.cpp pruh.h \
 		semafor.h \
 		generator.h \
-		dopravniprostredek.h \
-		outputgnuplot.h
+		dopravniprostredek.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pruh.o pruh.cpp
-
-outputgnuplot.o: outputgnuplot.cpp outputgnuplot.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o outputgnuplot.o outputgnuplot.cpp
-
-dataformatter.o: dataformatter.cpp dataformatter.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dataformatter.o dataformatter.cpp
 
 ####### Install
 
