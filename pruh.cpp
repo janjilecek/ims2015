@@ -1,7 +1,7 @@
 #include "pruh.h"
 
 int dayTimer::simHours = 24;
-
+float dayTimer::multiplier = 1;
 double pruh::seconds() const
 {
     return m_seconds;
@@ -56,7 +56,7 @@ pruh::pruh(armName namearm, dayTimer* d, const std::string nameOfArm): m_counter
         case DOLNI: m_dayTimer->getSem().setPassable(false); break;
         case LEVE: m_dayTimer->getSem().setPassable(true); break;
     }
-
+    multiplier = dayTimer::multiplier;
     //m_generator->Activate();
 }
 
@@ -78,6 +78,13 @@ pruh* pruh::setTiming(float s0e4, float s8e12, float s16e20)
         getDayTimer()->setLoadCurrent(s16e20);
     }
     // else stays at low extreme
+
+    getDayTimer()->getDayTime().s0e4 *= multiplier; // for experiments
+    getDayTimer()->getDayTime().s4e8 *= multiplier;
+    getDayTimer()->getDayTime().s8e12 *= multiplier;
+    getDayTimer()->getDayTime().s12e16 *= multiplier;
+    getDayTimer()->getDayTime().s16e20 *= multiplier;
+    getDayTimer()->getDayTime().s20e0 *= multiplier;
     m_dayTimer->Activate(Time);
     m_generator->Activate(Time);
     return this;
@@ -113,7 +120,7 @@ float dayTimer::calculateLoad(float former, float latter)
 {
     m_loadCurrent += ((latter - former)/m_timePortion);
     if (m_loadCurrent <= 0) m_loadCurrent = 0.05; // ochrana proti chodu do minulosti a zastaveni
-    if (m_simulateHours == 1) m_loadCurrent = former;
+    if (m_simulateHours == 1) m_loadCurrent = former; // simulace pouze hodinu
     return m_loadCurrent;
 }
 

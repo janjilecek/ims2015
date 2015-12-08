@@ -54,6 +54,7 @@ private:
 
 public:
     static int simHours;
+    static float multiplier;
     //dayTimer(dayTime* d, int seconds);
     dayTimer(float loadNormalTime, int simulateHours = 24, int startHour=0);
     void Behavior();
@@ -89,6 +90,7 @@ private:
     Histogram tabulka;
     OutputGnuplot plt;
 public:
+    float multiplier;
     pruh(armName namearm, dayTimer* d, const std::string nameOfArm);
     pruh* setTiming(float s0e4, float s8e12, float s16e20);
     double seconds() const;

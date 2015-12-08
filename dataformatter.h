@@ -10,8 +10,7 @@ class DataFormatter
 {
 public:
     DataFormatter();
-    static void countAverageToFile();
-    static void packToOneFile();
+    static void countAverageToFile(std::string suffix=".avg");
 };
 
 #endif // DATAFORMATTER_H

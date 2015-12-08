@@ -39,10 +39,18 @@ void OutputGnuplot::Output()
 }
 
 
-void CustomOutput::queueOut(std::string name, int inp)
+void CustomOutput::queueOut(std::string name, float inp, bool intorfloat)
 {
     std::ostringstream oss;
-    oss << name << "_queue.imsdat";
+    if (intorfloat)
+    {
+        oss << name << "_queue.imsdat";
+    }
+    else
+    {
+        oss << name << "_queue_time.imsdat";
+    }
+
     std::ofstream myfile;
     myfile.open (oss.str(), std::ios::out | std::ios::app);
     myfile << inp << std::endl;

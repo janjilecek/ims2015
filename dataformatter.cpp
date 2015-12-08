@@ -5,7 +5,7 @@ DataFormatter::DataFormatter()
 
 }
 
-void DataFormatter::countAverageToFile()
+void DataFormatter::countAverageToFile(std::string suffix)
 {
     std::vector<std::string> names;
     names.push_back("Horni rovne");
@@ -26,9 +26,20 @@ void DataFormatter::countAverageToFile()
     names.push_back("Leve doleva_queue.imsdat");
     names.push_back("Leve rovne_queue.imsdat");
     names.push_back("Leve doprava_queue.imsdat");
+    names.push_back("Horni rovne_queue_time.imsdat");
+    names.push_back("Horni doleva_queue_time.imsdat");
+    names.push_back("Prave doprava_queue_time.imsdat");
+    names.push_back("Prave doleva_queue_time.imsdat");
+    names.push_back("Dolni doprava_queue_time.imsdat");
+    names.push_back("Dolni rovne_queue_time.imsdat");
+    names.push_back("Leve doleva_queue_time.imsdat");
+    names.push_back("Leve rovne_queue_time.imsdat");
+    names.push_back("Leve doprava_queue_time.imsdat");
 
+    std::ostringstream os;
+    os << "output" << suffix;
     std::ofstream myf;
-    myf.open ("output.avg", std::ios::out | std::ios::app);
+    myf.open (os.str(), std::ios::out | std::ios::app);
     for (auto &filename : names)
     {
         std::ifstream myfile(filename);

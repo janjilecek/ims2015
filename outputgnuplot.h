@@ -17,7 +17,7 @@ public:
 class CustomOutput
 {
 public:
-    static void queueOut(std::string name, int inp);
+    static void queueOut(std::string name, float inp, bool intorfloat);
 };
 
 #endif // OUTPUTGNUPLOT_H
