@@ -113,6 +113,7 @@ float dayTimer::calculateLoad(float former, float latter)
 {
     m_loadCurrent += ((latter - former)/m_timePortion);
     if (m_loadCurrent <= 0) m_loadCurrent = 0.05; // ochrana proti chodu do minulosti a zastaveni
+    if (m_simulateHours == 1) m_loadCurrent = former;
     return m_loadCurrent;
 }
 
